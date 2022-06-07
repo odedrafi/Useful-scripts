@@ -1,0 +1,14 @@
+# how to run an azure pipeline agent container
+# run the commands when you are on the folder /dockeragent
+
+
+#variables data for docker run flags
+# AZP_URL=<project url> 
+# AZP_TOKEN=<your PAT token>
+# AZP_AGENT_NAME=<agent name> 
+
+
+# building a container image from docker file which is in the directory /dockeragent
+docker build -t dockeragent:latest .
+
+docker run -e AZP_URL=<project url> -e AZP_TOKEN=<your PAT token> -e AZP_AGENT_NAME=<agent name> dockeragent:latest
