@@ -1,0 +1,29 @@
+# name:branch cleanup pipeline
+
+
+trigger:
+- main
+pool: 'Default'
+
+#parameters to be set by user before run
+parameters:
+- name: LastCommit
+  displayName: Last activity was?
+  default: '1 month ago'
+- name: DryRun
+  displayName: Delete branches?
+  type: boolean
+  default: false
+
+stages:
+  
+  - stage: Manage_old_branches
+    jobs: 
+      - job: Print_and_delete_old_branches
+        pool:
+          name: "Default"
+        steps:
+          - script: sh branch-clean-up-script.sh
+            env:
+              DryRun: ${{parameters.DryRun}}
+              LastCommit: ${{ parameters.LastCommit }}
