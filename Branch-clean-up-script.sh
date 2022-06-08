@@ -5,7 +5,7 @@
 # The method in used is to first iterate on the brnches sorted by last commit date
 # and then for each branch we will check for the last commit(change)
 # the ones with no changes in the last month will be printed
-# excluding the branches with release un their branch name
+# excluding the branches with release in their branch name
 
 # git log --since="1 month ago"  branchName
 # Show the changes during the last month to the branch named branchName.
@@ -14,8 +14,8 @@
 
 # --format= %cr-takes the date of  the commit in the branch
 #           %an-takes the name of the authour of the commit in the brance
-
-
+# LastCommit => an env variable send from the pipeline to set the date we want to check
+# DryRun => an env variable send from the pipeline to set if deletion will take place or not
 
 # Regular Colors just for better understanding of output
 Black='\033[0;30m'  # Black
@@ -29,18 +29,18 @@ White='\033[0;37m'  # White
 NC='\033[0m'        # No Color
 ########################################################
 
-# echo "Enter Time for unused branch:"
 
-# read IdleTime "$IdleTime"
 
 for branch in $(git branch -r --sort=-committerdate | grep -v release); do
         
         
-        if ! [ "$(git log --since='1 month ago' $branch)" ]; then 
-                echo -e "$(git show --format="Last activity was ${Red}%cr${NC} By: ${Blue}%an${NC}" $branch | head -n 1) Branch name: ${Blue}$branch${NC}"
-                # # Add deletion option
-                # # git branch -d $branch
-                # # git push origin -d $branch
+        if ! [ "$(git log --since="{$LastCommit}" $branch)" ]; then 
+                echo "$(git show --format="Last activity was ${Red}%cr${NC} By: ${Blue}%an${NC}" $branch | head -n 1) Branch name: ${Blue}$branch${NC}"
+                if [ ${DryRun} = 'True' ]; then
+                        # git branch -d $branch
+                        # git push origin -d $branch
+                        echo "succes"
+                fi        
         fi
 
 done
