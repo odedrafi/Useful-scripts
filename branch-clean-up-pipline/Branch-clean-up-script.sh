@@ -39,7 +39,7 @@ for branch in $(git branch -r --sort=-committerdate | grep -v release); do
                 if [ ${DryRun} = 'True' ]; then
                         git branch -d $branch
                         git push origin -d $branch
-                        echo "succes"
+                        echo "Brnach deleted"
                 fi        
         fi
 
