@@ -1,12 +1,18 @@
 
+param (
+        [string]$PATH,
+ )
 
 
 
 
+#inorder to run the scripts inside a folder we must set the location to the folder
+Set-Location -Path $PATH
 
-aws s3 cp s3://$Env:BUCKET_NAME/$Env:SERVICE_NAME C:\Users\Administrator\Desktop\$Env:SERVICE_NAME --recursive
+#initialize parameters for the loop
+$fileDirectory = $PATH
 
+$parse_results = New-Object System.Collections.ArrayList;
 
-
-
-
+#running on all the files in the directory in question with the operator "&"
+foreach($script in Get-ChildItem $fileDirectory){ & .\$script}

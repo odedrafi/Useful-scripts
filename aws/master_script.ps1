@@ -10,21 +10,19 @@
 
 
 
-# set execution policy inorder to exexute scripts
+# set execution policy inorder to execute scripts
 Set-ExecutionPolicy RemoteSigned
 
 #copy folder from s3 bucket the parameters of bucket name and service folder name will be updated by user parameters
 aws s3 cp s3://$Env:BUCKET_NAME/$Env:SERVICE_NAME C:\Users\Administrator\Desktop\$Env:SERVICE_NAME --recursive
 
+
 #####################################################################################
-#inorder to run the scripts inside a folder we must set the location to the folder
-Set-Location -Path "C:\Users\Administrator\Desktop\$Env:SERVICE_NAME\scripts\input"
+#service installation script. runs the script that will install the service by passing the Path to the install script
+ & .\install_service.ps1 "C:\Users\Administrator\Desktop\$Env:SERVICE_NAME\scripts\input"
+#####################################################################################
 
-#initialize parameters for the loop
-$fileDirectory = "C:\Users\Administrator\Desktop\$Env:SERVICE_NAME\scripts\input"
-
-$parse_results = New-Object System.Collections.ArrayList;
-
-#running on all the files in the directory in question with the operator "&"
-foreach($file in Get-ChildItem $fileDirectory){ & .\$file}
+#####################################################################################
+#running the script that will copy files tp service local input folder an will return the service output to the s3 bucket
+ & .\executer.ps1
 #####################################################################################
