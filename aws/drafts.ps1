@@ -23,3 +23,14 @@ Parameter = @{
 # replace the content in the <place holder> with your parameters
 
 Send-SSMCommand PARAMETERS
+
+
+
+Get-S3Bucket -BucketName $Env:BUCKET_NAME
+
+
+
+
+
+
+Set-AWSCredential -AccessKey AKIASALCLAEZ7HVZ272L -SecretKe 0lNu09/UMtGkn0xD/6wqJW53zJqkDp+4Nxs2a6E -StoreAs oded
