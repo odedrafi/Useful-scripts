@@ -12,4 +12,4 @@ aws s3 cp "service local output folder" s3://$Env:BUCKET_NAME/$Env:SERVICE_NAME
 
 
 #shut down the ec2 instance
-aws stop-instances --instance-id "i-XXXXXXX"
+aws terminate-instances --instance-id "i-XXXXXXX"
