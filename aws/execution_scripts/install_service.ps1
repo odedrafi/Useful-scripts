@@ -15,4 +15,8 @@ $fileDirectory = $PATH
 $parse_results = New-Object System.Collections.ArrayList;
 
 # running on all the files in the directory in question with the operator "&"
-foreach($script in Get-ChildItem $fileDirectory){ & .\$script}
+foreach($script in Get-ChildItem $fileDirectory){ 
+    
+    & .\$script
+    
+}
