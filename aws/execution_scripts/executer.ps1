@@ -8,11 +8,16 @@
 param (
         [string]$Bucket_Data_Output_Path,
         [string]$Bucket_Data_Input_Path,
-        [string]$Local_input_Path,
-        [string]$local_output_path,
+        [string]$Bucket_algo_bin_path,
+        [string]$local_output_path="C:\Nucleix\output",
+        [string]$file_name 
+        [string]$Local_bin_path="C:\Nucleix\$algo_name"
  )
 
+Set-Location -Path $Local_bin_path
 .\Nucleix.BladderEpicheck.V1_9_51.exe $file_name $algo_name $local_output_path
+
+Set-Location -Path $Local_program_data_Path
 .\Nucleix.Nsa.V1_1_25.exe $file_name $algo_name $local_output_path
 
 
