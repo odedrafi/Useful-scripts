@@ -1,15 +1,17 @@
 # recive PATH to local service folder from master script
 param (
-        [string]$Bucket_Data_Output_Path,
-        [string]$Bucket_Data_Input_Path,
-        [string]$Local_input_Path,
+        [string]$Bucket_algo_bin_path,
+        [string]$Bucket_program_data_Path,
+        [string]$Local_bin_path,
+        [string]$Local_program_data_Path,
  )
 
 
 
 
-#copy files to local service input folder from the s3 data bucket input folder that they are located in
+#copy the algoritem from s3 algo bucket to ec2 instance(installation of algorithm)
 aws s3 cp $Bucket_algo_bin_path $Local_bin_path
+
 aws s3 cp $Bucket_program_data_Path $Local_program_data_Path
 
 
