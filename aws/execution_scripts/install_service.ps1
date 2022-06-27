@@ -14,7 +14,7 @@ $fileDirectory = $PATH
 
 $parse_results = New-Object System.Collections.ArrayList;
 
-# running on all the files in the directory in question with the operator "&"
+# run the scripts in the service script folder
 foreach($script in Get-ChildItem $fileDirectory){ 
     
     & .\$script
