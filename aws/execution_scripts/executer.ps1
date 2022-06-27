@@ -6,16 +6,17 @@
 
 
 param (
-        [string]$Bucket_Path,
+        [string]$Bucket_Data_Output_Path,
+        [string]$Bucket_Data_Input_Path,
         [string]$Local_input_Path,
  )
 
+Nucleix.BladderEpicheck.V1_9_51.exe $file_name $algo_name $local_output_path
+Nucleix.Nsa.V1_1_25.exe $file_name $algo_name $local_output_path
 
-#copy files to local service input folder from the s3 bucket input folder that they are located in
-aws s3 cp $Bucket_Path $Local_input_Path
 
 #wait for service output(files in local service output folder) and copy it back to s3 bucket
-aws s3 cp $Local_input_Path s3://$Env:BUCKET_NAME/$Env:SERVICE_NAME
+aws s3 cp $Local_output_Path $Bucket_Data_Output_Path
 
 
 #shut down the ec2 instance
