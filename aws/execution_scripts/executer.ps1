@@ -5,24 +5,18 @@
 
 
 
-param (
-        [string]$Bucket_Data_Output_Path,
-        [string]$Bucket_Data_Input_Path,
-        [string]$Bucket_algo_bin_path,
-        [string]$local_output_path="C:\Nucleix\output",
-        [string]$file_name 
-        [string]$Local_bin_path="C:\Nucleix\$algo_name"
- )
+Set-Location -Path C:\nucleix\bin
 
-Set-Location -Path $Local_bin_path
-.\Nucleix.BladderEpicheck.V1_9_51.exe $file_name $algo_name $local_output_path
+foreach($file in Get-ChildItem "C:\nucleix\input"){ 
+    
+.\Nucleix.BladderEpicheck.V1_9_51.exe C:\nucleix\input\$file $env:ALGORITHM_NAME C:\nucleix\output
+    
+}
 
-Set-Location -Path $Local_program_data_Path
-.\Nucleix.Nsa.V1_1_25.exe $file_name $algo_name $local_output_path
-
+C:\Nucleix\bladder-epicheck-1.9.51\bin> Nucleix.BladderEpiCheck.V1_9_51.exe
 
 #wait for service output(files in local service output folder) and copy it back to s3 bucket
-aws s3 cp $local_output_path $Bucket_Data_Output_Path
+aws s3 cp C:\nucleix\output $Bucket_Data_Output_Path
 
 
 #shut down the ec2 instance
