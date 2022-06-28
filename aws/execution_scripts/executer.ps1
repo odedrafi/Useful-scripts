@@ -8,20 +8,22 @@ $Local_output_path = "C:\nucleix\output"
 $Local_input_path = "C:\nucleix\input"
 $Local_algo_bin_path = "C:\nucleix\bin"
 
+# copy the input samples for test run
+aws s3 cp s3://$env:BUCKET_NAME/$env:ALGORITHM_NAME/input $Local_input_path --recursive
 
 # setting location to the directory were the EXE process is lcated so we could run the process
 Set-Location -Path $Local_algo_bin_path
 
 # looping over the samples in the local input folder
-foreach($SampleFile in Get-ChildItem $Local_input_patht){ 
+foreach ($SampleFile in Get-ChildItem $Local_input_patht) { 
     
-.\Nucleix.BladderEpicheck.V1_9_51.exe $Local_input_path\$SampleFile $env:ALGORITHM_NAME $Local_output_path
+    .\Nucleix.BladderEpicheck.V1_9_51.exe $Local_input_path\$SampleFile $env:ALGORITHM_NAME $Local_output_path
     
 }
 
 
-# #wait for algo output, and copy it back to s3 bucket
-# aws s3 cp C:\nucleix\output $Bucket_Data_Output_Path
+#wait for algo output, and copy it back to s3 bucket
+aws s3 cp C:\nucleix\output s3://$env:BUCKET_NAME/$env:ALGORITHM_NAME/output
 
 
 # #shut down the ec2 instance
