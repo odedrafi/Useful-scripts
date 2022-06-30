@@ -12,7 +12,7 @@
 
 $ErrorActionPreference = 'stop'
 # set execution policy inorder to execute scripts
-Set-ExecutionPolicy RemoteSigned
+# Set-ExecutionPolicy RemoteSigned -Force
 
 try {
     #####################################################################################
@@ -27,6 +27,6 @@ try {
 
 }
 catch {
-    Write-Host "Script failed : "$Error[0]"" -ForegroundColor red
+    Write-Host "Script failed: "$Error[0]"" -ForegroundColor red
     
 }
