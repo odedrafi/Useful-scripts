@@ -13,8 +13,13 @@
 $ErrorActionPreference = 'stop'
 # set execution policy inorder to execute scripts
 # Set-ExecutionPolicy RemoteSigned -Force
+Write-Host "master_script has started." -ForegroundColor green
+
+
 
 try {
+
+
     #####################################################################################
     # service installation script.will copy the algoritem from s3 bucket to ec2 instance
     & .\install_algo_script.ps1
