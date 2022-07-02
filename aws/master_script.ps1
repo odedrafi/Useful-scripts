@@ -32,6 +32,14 @@ try {
 
 }
 catch {
-    Write-Host "Script failed: "$Error[0]"" -ForegroundColor red
-    
+    $date = Get-Date -Format G
+    Write-Host " $date : Script failed: "$Error[0]" " -ForegroundColor red
+    Write-Output  " $date : Script failed: "$Error[0]" " >> C:\"$env:ALGORITHM_NAME"_logFile.txt
+    aws s3 cp  C:\"$env:ALGORITHM_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/"$env:ALGORITHM_NAME"_logFile.txt
 }
+finally {
+
+    # aws s3 cp  C:\"$env:ALGORITHM_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/"$env:ALGORITHM_NAME"_logFile.txt
+
+}
+
