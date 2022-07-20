@@ -5,14 +5,13 @@
 # resulte=> installing an algorithm and executing it with a sample file inorder to produce an output 
 # and then copying it to a s3 bucket
 # 
-# to echieve that the master script wil run two sub scripts
+# to achieve that the master script wil run two sub scripts
 # 1. install_algo_script.ps1 - this script will install(copy) the relevent algo to the local instance
 # 2. executer.ps1- this script will copy the sample file from the s3 bucket and execute the algo on the sample file
-# produce an output, copy it back to the s3 bucket and terminate the instance.
+#    produce an output, copy it back to the s3 bucket and terminate the instance.
+#    has a use case for failed process by creating a log file and sending it back to the bucket for debugging
 
 $ErrorActionPreference = 'stop'
-# set execution policy inorder to execute scripts
-# Set-ExecutionPolicy RemoteSigned -Force
 Write-Host "master_script has started." -ForegroundColor green
 
 
@@ -33,13 +32,24 @@ try {
 }
 catch {
     $date = Get-Date -Format G
+    $Date_Array = Get-Date -Format "yyyy/MM/dd" # use to set the folder convention on the failed directory in the bucket
     Write-Host " $date : Script failed: "$Error[0]" " -ForegroundColor red
-    Write-Output  " $date : Script failed: "$Error[0]" " >> C:\"$env:ALGORITHM_NAME"_logFile.txt
-    aws s3 cp  C:\"$env:ALGORITHM_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/"$env:ALGORITHM_NAME"_logFile.txt
-}
-finally {
-
-    # aws s3 cp  C:\"$env:ALGORITHM_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/"$env:ALGORITHM_NAME"_logFile.txt
+    Write-Output  " $date : Script failed: "$Error[0]" " >> C:\"$env:FILE_NAME"_logFile.txt
+    aws s3 cp  C:\"$env:FILE_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/failed/$Date_Array/"$env:FILE_NAME"_logFile.txt
+    aws s3 cp  C:\nucleix\in_progres\$env:FILE_NAME s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/failed/$Date_Array/$env:FILE_NAME
 
 }
+# finally {
+
+#      aws s3 cp  C:\"$env:FILE_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/succeeded/$Date_Array/"$env:FILE_NAMEE"_logFile.txt
+
+# }
+
+
+
+
+
+
+
+
 
