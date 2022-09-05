@@ -12,3 +12,12 @@
 docker build -t dockeragent:latest .
 
 docker run -e AZP_URL=<project url> -e AZP_TOKEN=<your PAT token> -e AZP_AGENT_NAME=<agent name> dockeragent:latest
+
+
+docker run -e AZP_URL=https://dev.azure.com/odedr0185/test_project -e AZP_TOKEN=4eoguctymakenm5tmpvoi7pbaxxrpojvzvrtkwjodjkzu4ukurva -e AZP_AGENT_NAME=test_project dockeragent:latest
+
+
+
+
+## to remove agent
+.\config remove

@@ -37,10 +37,3 @@ in the future this process will be templated in CDK for automation.
 
 ![Enviroment goals picture]()
 
-## Deployment
-
-Will be add after CDK implimitation
-
-
-
- []().

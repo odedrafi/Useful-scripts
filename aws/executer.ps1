@@ -25,9 +25,9 @@ Write-Host "$date :Copying sample file from bucket_input." -ForegroundColor gree
 Write-Output  "$date :Copying sample file from bucket_input." *>> C:\"$env:FILE_NAME"_logFile.txt
 #uncomment for manual checks
 # Copy-Item -Path "C:\input\$env:FILE_NAME" -Destination $Local_in_Progres_path 
-
 aws s3 cp s3://$env:BUCKET_INPUT_NAME/$env:FILE_PATH $Local_in_Progres_path >> C:\"$env:FILE_NAME"_logFile.txt
-aws s3 rm s3://$env:BUCKET_INPUT_NAME/$env:FILE_PATH >> C:\"$env:FILE_NAME"_logFile.txt
+# and delete the sample file from the bucket input folder
+aws s3 rm s3://$env:BUCKET_INPUT_NAME/$env:FILE_PATH >> C:\"$env:FILE_NAME"_logFile.txt 
 
 # setting location to the directory were the EXE process is lcated so we could run the process
 $date = Get-Date -Format G
@@ -63,21 +63,27 @@ if ( $Algo_failed_run -ne 0 ){
 
     Write-Host " $date : Script failed due to algorithm error" -ForegroundColor red
     Write-Output  " $date : Script failed due to algorithm error" >> C:\"$env:FILE_NAME"_logFile.txt
-
-    aws s3 cp  C:\"$env:FILE_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/failed/$Date_Array/"$env:FILE_NAME"_logFile.txt
+    # Copying the output of the algorithm to the output directory in the bucket.and the sample file
+    # and delete the sample file from the bucket input folder
+    aws s3 cp C:\"$env:FILE_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/failed/$Date_Array/"$env:FILE_NAME"_logFile.txt
+    #copy sample file to failed run as well
+    aws s3 cp $Local_in_Progres_path/$env:FILE_PATH s3://$Env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/failed/$Date_Array/$env:FILE_PATH
 
 }
 else{
-# Copying the output of the algorithm to the output directory in the bucket.s
+# Copying the output of the algorithm and the sample file to the output directory in the bucket.
 $date = Get-Date -Format G
 Write-Host "$date :Copying the output of the algorithm to the output directory in the bucket." -ForegroundColor green
 Write-Output  "$date :Copying the output of the algorithm to the output directory in the bucket." *>> C:\"$env:FILE_NAME"_logFile.txt
 aws s3 cp $Local_output_path s3://$Env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/output/$Date_Array --recursive #*>> C:\"$env:FILE_NAME"_logFile.txt
+aws s3 cp $Local_in_Progres_path/$env:FILE_PATH s3://$Env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/output/$Date_Array
 
 
-# copy logFile after succes run before instance shutdown to the bucket 
+# copy logFile after succes run before instance shutdown to the bucket
 aws s3 cp  C:\"$env:FILE_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/succeeded/$Date_Array/"$env:FILE_NAME"_logFile.txt
+
 }
+
 
 
 #shut down the ec2 instance

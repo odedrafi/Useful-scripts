@@ -1,0 +1,99 @@
+global:
+  cpu: 250m
+  memory: 512Mi
+  environment: dev
+  region: eu-central-1
+  hostname: dev.nucleix.net
+  repo: 557977079766.dkr.ecr.eu-central-1.amazonaws.com
+
+analyze-temperature-report-pdf:
+  enabled: true
+  scaledjob:
+    triggers:
+      type: aws-sqs-queue
+      metadata:
+        queueURL: https://sqs.eu-central-1.amazonaws.com/557977079766/pdf-processing-dev
+        identityOwner: operator
+        queueLength: "5"
+        awsRegion: eu-central-1
+
+  config:
+    env:
+      AWS_REGION: eu-central-1
+      AWS_QUEUE_URL: https://sqs.eu-central-1.amazonaws.com/557977079766/pdf-processing-dev
+      
+clinical-supply-dal:
+  enabled: true
+  config:
+    env:
+      PORT: "80"
+      COGNITO_REGION: eu-central-1
+      COGNITO_POOL_ID: eu-central-1_0zk4wEZrh
+      
+laboratory-data-dal:
+  enabled: true
+  config:
+    env:
+      PORT: "80"
+      OS_URL: https://openspecimen.dev.nucleix.net
+      COGNITO_REGION: "eu-central-1"
+      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
+
+experiments-dal:
+  enabled: true
+  config:
+    env:
+      PORT: "80"
+      COGNITO_REGION: "eu-central-1"
+      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
+
+insert-shipment:
+  enabled: true
+  config:
+    env:
+      PORT: "80"
+      EASYPOST_KEY: EZAKefd1f1b065774a90b066410339f6b4b7G5tUVSLJ89f0A6mflrVF2A
+
+pathtec:
+  enabled: true
+  config:
+    env:
+      ENVIRONMENT: "development"
+      PORT: "80"
+      PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
+      PT_BASE_URL: http://api.labsupplyline.com/api
+      PT_API_TOKEN: 6f4c5395-0725-43b1-8c9c-38711cd3c253
+      IS_CRONJOB_ONLY: "false"
+      INSERT_SHIPMENT_BASE_URL: "http://insert-shipment"
+      INSERT_SHIPMENT_BASE_URL_EXTERNAL: "http://internal-gateway"
+      ES_PATHTEC_ARCHIVE_INDEX: pt_order_details
+      ES_ORDER_DETAILS_PATHTEC_INDEX: orderdetails_pathtec
+      ES_OUTBOUND_SHIPMENTS_INDEX: outboundshipments
+      ES_INBOUND_SHIPMENTS_INDEX: inboundshipments
+      SNS_PT_HANDLER_TOPIC: arn:aws:sns:eu-central-1:557977079766:Pathtec-dev_handler
+      EASYPOST_KEY: EZAKefd1f1b065774a90b066410339f6b4b7G5tUVSLJ89f0A6mflrVF2A
+ 
+gap-analysis:
+  enabled: true
+  config:
+    env:
+      PORT: "80"
+      RDS_HOST: trialpayments-poc-eu-central-1.cg11gv1ah0og.eu-central-1.rds.amazonaws.com
+      RDS_DEFAULT_DB: ClinicalSitesPayments
+      RDS_USER: clusteradmin
+
+insert-experiment:
+  enabled: true
+  scaledjob:
+    triggers:
+      type: aws-sqs-queue
+      metadata:
+        queueURL: https://sqs.eu-central-1.amazonaws.com/557977079766/insert-experiment-dev
+        identityOwner: operator
+        queueLength: "1"
+        awsRegion: eu-central-1
+  config:
+    env:
+      AWS_QUEUE_URL: https://sqs.eu-central-1.amazonaws.com/557977079766/insert-experiment-dev
+      AWS_QUEUE_REGION: eu-central-1
+
