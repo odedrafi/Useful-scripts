@@ -1,94 +1,117 @@
-commit 3a5566d24c8a89a5d66a9e7adfb5c069b96b16c5
+commit 24adc813dda4d6813265ea757cc53f933cb7fc1a
 Author: odedrafi <odedr@sela.co.il>
-Date:   Mon Sep 5 15:30:03 2022 +0300
+Date:   Mon Sep 5 15:40:21 2022 +0300
 
-    test
+    test1
 
-diff --git a/branch-clean-up-pipline/changes.txt b/branch-clean-up-pipline/changes.txt
-index 176fc45..6065597 100644
---- a/branch-clean-up-pipline/changes.txt
-+++ b/branch-clean-up-pipline/changes.txt
-@@ -1,19 +1,29 @@
--commit 9ed1ce15ec147cbac4b4cb5dc7f58e3edb0210d5
-+commit 7942843eeec91e13eaf6faafa791879573950ac9
- Author: odedrafi <odedr@sela.co.il>
--Date:   Mon Sep 5 14:04:40 2022 +0300
-+Date:   Mon Sep 5 14:22:39 2022 +0300
- 
-     test
- 
- diff --git a/branch-clean-up-pipline/values_dev.yaml b/branch-clean-up-pipline/values_dev.yaml
--index 6c73e71..f97ba2c 100644
-+index f97ba2c..8f7959c 100644
- --- a/branch-clean-up-pipline/values_dev.yaml
- +++ b/branch-clean-up-pipline/values_dev.yaml
--@@ -38,7 +38,7 @@ laboratory-data-dal:
-+@@ -45,6 +45,7 @@ experiments-dal:
-+   config:
-+     env:
-        PORT: "80"
--       OS_URL: https://openspecimen.dev.nucleix.net
-++
-        COGNITO_REGION: "eu-central-1"
---      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
--+      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh2222"
-+       COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
-  
-- experiments-dal:
--   enabled: true
-+@@ -60,6 +61,7 @@ pathtec:
+diff --git a/branch-clean-up-pipline/1.txt b/branch-clean-up-pipline/1.txt
+new file mode 100644
+index 0000000..0fd75c8
+--- /dev/null
++++ b/branch-clean-up-pipline/1.txt
+@@ -0,0 +1,94 @@
++commit 3a5566d24c8a89a5d66a9e7adfb5c069b96b16c5
++Author: odedrafi <odedr@sela.co.il>
++Date:   Mon Sep 5 15:30:03 2022 +0300
++
++    test
++
++diff --git a/branch-clean-up-pipline/changes.txt b/branch-clean-up-pipline/changes.txt
++index 176fc45..6065597 100644
++--- a/branch-clean-up-pipline/changes.txt
+++++ b/branch-clean-up-pipline/changes.txt
++@@ -1,19 +1,29 @@
++-commit 9ed1ce15ec147cbac4b4cb5dc7f58e3edb0210d5
+++commit 7942843eeec91e13eaf6faafa791879573950ac9
++ Author: odedrafi <odedr@sela.co.il>
++-Date:   Mon Sep 5 14:04:40 2022 +0300
+++Date:   Mon Sep 5 14:22:39 2022 +0300
++ 
++     test
++ 
++ diff --git a/branch-clean-up-pipline/values_dev.yaml b/branch-clean-up-pipline/values_dev.yaml
++-index 6c73e71..f97ba2c 100644
+++index f97ba2c..8f7959c 100644
++ --- a/branch-clean-up-pipline/values_dev.yaml
++ +++ b/branch-clean-up-pipline/values_dev.yaml
++-@@ -38,7 +38,7 @@ laboratory-data-dal:
+++@@ -45,6 +45,7 @@ experiments-dal:
+++   config:
+++     env:
++        PORT: "80"
++-       OS_URL: https://openspecimen.dev.nucleix.net
++++
++        COGNITO_REGION: "eu-central-1"
++--      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
++-+      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh2222"
+++       COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
++  
++- experiments-dal:
++-   enabled: true
+++@@ -60,6 +61,7 @@ pathtec:
+++   config:
+++     env:
+++       ENVIRONMENT: "development"
++++      
+++       PORT: "80"
+++       PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
+++       PT_BASE_URL: http://api.labsupplyline.com/api
+++diff --git a/changes.txt b/changes.txt
+++deleted file mode 100644
+++index e69de29..0000000
++diff --git a/branch-clean-up-pipline/test.txt b/branch-clean-up-pipline/test.txt
++new file mode 100644
++index 0000000..cfe4764
++--- /dev/null
+++++ b/branch-clean-up-pipline/test.txt
++@@ -0,0 +1,2 @@
+++@@ -45,6 +45,7 @@ experiments-dal:
+++@@ -60,6 +61,7 @@ pathtec:
++diff --git a/branch-clean-up-pipline/test2.txt b/branch-clean-up-pipline/test2.txt
++new file mode 100644
++index 0000000..cfe4764
++--- /dev/null
+++++ b/branch-clean-up-pipline/test2.txt
++@@ -0,0 +1,2 @@
+++@@ -45,6 +45,7 @@ experiments-dal:
+++@@ -60,6 +61,7 @@ pathtec:
++diff --git a/branch-clean-up-pipline/values_dev.yaml b/branch-clean-up-pipline/values_dev.yaml
++index 8f7959c..38a10a6 100644
++--- a/branch-clean-up-pipline/values_dev.yaml
+++++ b/branch-clean-up-pipline/values_dev.yaml
++@@ -1,5 +1,5 @@
++ global:
++-  cpu: 250m
+++  cpu: 500m
++   memory: 512Mi
++   environment: dev
++   region: eu-central-1
++@@ -61,7 +61,7 @@ pathtec:
 +   config:
 +     env:
 +       ENVIRONMENT: "development"
-++      
++-      
+++
 +       PORT: "80"
 +       PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
 +       PT_BASE_URL: http://api.labsupplyline.com/api
-+diff --git a/changes.txt b/changes.txt
-+deleted file mode 100644
-+index e69de29..0000000
-diff --git a/branch-clean-up-pipline/test.txt b/branch-clean-up-pipline/test.txt
-new file mode 100644
-index 0000000..cfe4764
---- /dev/null
-+++ b/branch-clean-up-pipline/test.txt
-@@ -0,0 +1,2 @@
-+@@ -45,6 +45,7 @@ experiments-dal:
-+@@ -60,6 +61,7 @@ pathtec:
-diff --git a/branch-clean-up-pipline/test2.txt b/branch-clean-up-pipline/test2.txt
-new file mode 100644
-index 0000000..cfe4764
---- /dev/null
-+++ b/branch-clean-up-pipline/test2.txt
-@@ -0,0 +1,2 @@
-+@@ -45,6 +45,7 @@ experiments-dal:
-+@@ -60,6 +61,7 @@ pathtec:
++@@ -77,7 +77,7 @@ pathtec:
++       EASYPOST_KEY: EZAKefd1f1b065774a90b066410339f6b4b7G5tUVSLJ89f0A6mflrVF2A
++  
++ gap-analysis:
++-  enabled: true
+++  enabled: false
++   config:
++     env:
++       PORT: "80"
 diff --git a/branch-clean-up-pipline/values_dev.yaml b/branch-clean-up-pipline/values_dev.yaml
-index 8f7959c..38a10a6 100644
+index 38a10a6..50b7759 100644
 --- a/branch-clean-up-pipline/values_dev.yaml
 +++ b/branch-clean-up-pipline/values_dev.yaml
-@@ -1,5 +1,5 @@
- global:
--  cpu: 250m
-+  cpu: 500m
-   memory: 512Mi
-   environment: dev
-   region: eu-central-1
-@@ -61,7 +61,7 @@ pathtec:
+@@ -98,5 +98,6 @@ insert-experiment:
    config:
      env:
-       ENVIRONMENT: "development"
--      
-+
-       PORT: "80"
-       PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
-       PT_BASE_URL: http://api.labsupplyline.com/api
-@@ -77,7 +77,7 @@ pathtec:
-       EASYPOST_KEY: EZAKefd1f1b065774a90b066410339f6b4b7G5tUVSLJ89f0A6mflrVF2A
-  
- gap-analysis:
--  enabled: true
-+  enabled: false
-   config:
-     env:
-       PORT: "80"
+       AWS_QUEUE_URL: https://sqs.eu-central-1.amazonaws.com/557977079766/insert-experiment-dev
++      
+       AWS_QUEUE_REGION: eu-central-1
+ 
