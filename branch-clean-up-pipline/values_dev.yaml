@@ -38,7 +38,7 @@ laboratory-data-dal:
       PORT: "80"
       OS_URL: https://openspecimen.dev.nucleix.net
       COGNITO_REGION: "eu-central-1"
-      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
+      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh2222"
 
 experiments-dal:
   enabled: true
