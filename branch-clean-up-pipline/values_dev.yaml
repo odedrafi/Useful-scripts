@@ -27,6 +27,7 @@ clinical-supply-dal:
   config:
     env:
       PORT: "80"
+      PORT2: "800"
       COGNITO_REGION: eu-central-1
       COGNITO_POOL_ID: eu-central-1_0zk4wEZrh
       
