@@ -1,0 +1,19 @@
+commit 9ed1ce15ec147cbac4b4cb5dc7f58e3edb0210d5
+Author: odedrafi <odedr@sela.co.il>
+Date:   Mon Sep 5 14:04:40 2022 +0300
+
+    test
+
+diff --git a/branch-clean-up-pipline/values_dev.yaml b/branch-clean-up-pipline/values_dev.yaml
+index 6c73e71..f97ba2c 100644
+--- a/branch-clean-up-pipline/values_dev.yaml
++++ b/branch-clean-up-pipline/values_dev.yaml
+@@ -38,7 +38,7 @@ laboratory-data-dal:
+       PORT: "80"
+       OS_URL: https://openspecimen.dev.nucleix.net
+       COGNITO_REGION: "eu-central-1"
+-      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
++      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh2222"
+ 
+ experiments-dal:
+   enabled: true
