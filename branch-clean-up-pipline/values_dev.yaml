@@ -1,5 +1,5 @@
 global:
-  cpu: 500m
+  cpu: 200m
   memory: 512Mi
   environment: dev
   region: eu-central-1
@@ -10,16 +10,16 @@ analyze-temperature-report-pdf:
   enabled: true
   scaledjob:
     triggers:
-      type: aws-sqs-queue
+      type: aws-sq2s-queue
       metadata:
         queueURL: https://sqs.eu-central-1.amazonaws.com/557977079766/pdf-processing-dev
         identityOwner: operator
         queueLength: "5"
-        awsRegion: eu-central-1
+        awsRegion: eu-ce2ntral-1
 
   config:
     env:
-      AWS_REGION: eu-central-1
+      AWS_REGION: eu-cent2ral-1
       AWS_QUEUE_URL: https://sqs.eu-central-1.amazonaws.com/557977079766/pdf-processing-dev
       
 clinical-supply-dal:
@@ -29,7 +29,7 @@ clinical-supply-dal:
       PORT: "80"
       PORT2: "800"
       COGNITO_REGION: eu-ce3ntral-1
-      COGNITO_POOL_ID: eu-cent3ral-1_0zk4wEZrh
+      COGNITO_POOL_ID: eu-ce2nt3ral-1_0zk4wEZrh
       
 laboratory-data-dal:
   enabled: true
@@ -38,7 +38,7 @@ laboratory-data-dal:
       PORT: "80"
       OS_URL: https://openspecimen.dev.nucleix.net
       COGNITO_REGION: "eu-central-1"
-      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh2222"
+      COGNITO_POOL_ID: "eu-ce2ntral-1_0zk4wEZrh2222"
 
 experiments-dal:
   enabled: true
@@ -83,7 +83,7 @@ gap-analysis:
       PORT: "80"
       RDS_HOST: trialpayments-poc-eu-central-1.cg11gv1ah0og.eu-central-1.rds.amazonaws.com
       RDS_DEFAULT_DB: ClinicalSitesPayments
-      RDS_USER: clusteradmin
+      RDS_USER: clusterad2min
 
 insert-experiment:
   enabled: false
@@ -97,6 +97,6 @@ insert-experiment:
         awsRegion: eu-central-1
   config:
     env:
-      AWS_QUEUE_URL: https://sqs.eu-central-1.amazonaws.com/557977079766/insert-experiment-dev
-      AWS_QUEUE_REGION: eu-central-12
+      AWS_QUEUE_URL: https://sqs2.eu-central-1.amazonaws.com/557977079766/insert-experiment-dev
+      AWS_QUEUE_REGION: eu-2central-12
 
