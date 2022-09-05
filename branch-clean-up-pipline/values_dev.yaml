@@ -28,8 +28,8 @@ clinical-supply-dal:
     env:
       PORT: "80"
       PORT2: "800"
-      COGNITO_REGION: eu-central-1
-      COGNITO_POOL_ID: eu-central-1_0zk4wEZrh
+      COGNITO_REGION: eu-ce3ntral-1
+      COGNITO_POOL_ID: eu-cent3ral-1_0zk4wEZrh
       
 laboratory-data-dal:
   enabled: true
@@ -46,8 +46,8 @@ experiments-dal:
     env:
       PORT: "90"
 
-      COGNITO_REGION: "eu-central-1"
-      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
+      COGNITO_REGION: "eu-central-12"
+      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh3"
 
 insert-shipment:
   enabled: true
