@@ -1,5 +1,5 @@
 global:
-  cpu: 250m
+  cpu: 500m
   memory: 512Mi
   environment: dev
   region: eu-central-1
@@ -61,7 +61,7 @@ pathtec:
   config:
     env:
       ENVIRONMENT: "development"
-      
+
       PORT: "80"
       PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
       PT_BASE_URL: http://api.labsupplyline.com/api
@@ -77,7 +77,7 @@ pathtec:
       EASYPOST_KEY: EZAKefd1f1b065774a90b066410339f6b4b7G5tUVSLJ89f0A6mflrVF2A
  
 gap-analysis:
-  enabled: true
+  enabled: false
   config:
     env:
       PORT: "80"

@@ -1,19 +1,29 @@
-commit 9ed1ce15ec147cbac4b4cb5dc7f58e3edb0210d5
+commit 7942843eeec91e13eaf6faafa791879573950ac9
 Author: odedrafi <odedr@sela.co.il>
-Date:   Mon Sep 5 14:04:40 2022 +0300
+Date:   Mon Sep 5 14:22:39 2022 +0300
 
     test
 
 diff --git a/branch-clean-up-pipline/values_dev.yaml b/branch-clean-up-pipline/values_dev.yaml
-index 6c73e71..f97ba2c 100644
+index f97ba2c..8f7959c 100644
 --- a/branch-clean-up-pipline/values_dev.yaml
 +++ b/branch-clean-up-pipline/values_dev.yaml
-@@ -38,7 +38,7 @@ laboratory-data-dal:
+@@ -45,6 +45,7 @@ experiments-dal:
+   config:
+     env:
        PORT: "80"
-       OS_URL: https://openspecimen.dev.nucleix.net
++
        COGNITO_REGION: "eu-central-1"
--      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
-+      COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh2222"
+       COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
  
- experiments-dal:
-   enabled: true
+@@ -60,6 +61,7 @@ pathtec:
+   config:
+     env:
+       ENVIRONMENT: "development"
++      
+       PORT: "80"
+       PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
+       PT_BASE_URL: http://api.labsupplyline.com/api
+diff --git a/changes.txt b/changes.txt
+deleted file mode 100644
+index e69de29..0000000
