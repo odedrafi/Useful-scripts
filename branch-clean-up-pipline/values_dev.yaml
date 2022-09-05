@@ -45,6 +45,7 @@ experiments-dal:
   config:
     env:
       PORT: "80"
+
       COGNITO_REGION: "eu-central-1"
       COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
 
@@ -60,6 +61,7 @@ pathtec:
   config:
     env:
       ENVIRONMENT: "development"
+      
       PORT: "80"
       PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
       PT_BASE_URL: http://api.labsupplyline.com/api
