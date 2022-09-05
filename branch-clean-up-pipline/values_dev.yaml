@@ -44,7 +44,7 @@ experiments-dal:
   enabled: true
   config:
     env:
-      PORT: "80"
+      PORT: "90"
 
       COGNITO_REGION: "eu-central-1"
       COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
@@ -57,7 +57,7 @@ insert-shipment:
       EASYPOST_KEY: EZAKefd1f1b065774a90b066410339f6b4b7G5tUVSLJ89f0A6mflrVF2A
 
 pathtec:
-  enabled: true
+  enabled: false
   config:
     env:
       ENVIRONMENT: "development"
@@ -77,7 +77,7 @@ pathtec:
       EASYPOST_KEY: EZAKefd1f1b065774a90b066410339f6b4b7G5tUVSLJ89f0A6mflrVF2A
  
 gap-analysis:
-  enabled: false
+  enabled: true
   config:
     env:
       PORT: "80"
@@ -86,7 +86,7 @@ gap-analysis:
       RDS_USER: clusteradmin
 
 insert-experiment:
-  enabled: true
+  enabled: false
   scaledjob:
     triggers:
       type: aws-sqs-queue
