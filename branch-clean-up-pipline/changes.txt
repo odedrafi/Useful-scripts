@@ -1,29 +1,7 @@
-commit 7942843eeec91e13eaf6faafa791879573950ac9
-Author: odedrafi <odedr@sela.co.il>
-Date:   Mon Sep 5 14:22:39 2022 +0300
+git show | grep @@ | tr -dc '[[:lower:]]\n-' | sed 's/-//'
 
-    test
 
-diff --git a/branch-clean-up-pipline/values_dev.yaml b/branch-clean-up-pipline/values_dev.yaml
-index f97ba2c..8f7959c 100644
---- a/branch-clean-up-pipline/values_dev.yaml
-+++ b/branch-clean-up-pipline/values_dev.yaml
-@@ -45,6 +45,7 @@ experiments-dal:
-   config:
-     env:
-       PORT: "80"
-+
-       COGNITO_REGION: "eu-central-1"
-       COGNITO_POOL_ID: "eu-central-1_0zk4wEZrh"
- 
-@@ -60,6 +61,7 @@ pathtec:
-   config:
-     env:
-       ENVIRONMENT: "development"
-+      
-       PORT: "80"
-       PT_API_KEY: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJudWNsZWl4IiwiaWF0IjoxNjI2OTM2NTY0LCJleHAiOjE5NDI0NjkzNjQsImF1ZCI6InBhdGgtdGVjIiwic3ViIjoicHVzaCBvcmRlciBkZXRhaWxzIn0.GTqIJkAGGCt-BovWvkDyO5kttsbGVCPQCP4ua5uox44
-       PT_BASE_URL: http://api.labsupplyline.com/api
-diff --git a/changes.txt b/changes.txt
-deleted file mode 100644
-index e69de29..0000000
+aws ecr describe-images --repository-name analysisservices 
+
+
+
