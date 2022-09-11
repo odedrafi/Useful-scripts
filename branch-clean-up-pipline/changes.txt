@@ -1,7 +1,0 @@
-git show | grep @@ | tr -dc '[[:lower:]]\n-' | sed 's/-//'
-
-
-aws ecr describe-images --repository-name analysisservices 
-
-
-
