@@ -39,11 +39,6 @@ catch {
     aws s3 cp  C:\nucleix\in_progres\$env:FILE_NAME s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/failed/$Date_Array/$env:FILE_NAME
 
 }
-# finally {
-
-#      aws s3 cp  C:\"$env:FILE_NAME"_logFile.txt s3://$env:BUCKET_ALGO_NAME/$env:ALGORITHM_PATH/succeeded/$Date_Array/"$env:FILE_NAMEE"_logFile.txt
-
-# }
 
 
 
